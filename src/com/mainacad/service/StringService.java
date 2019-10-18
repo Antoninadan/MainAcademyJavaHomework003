@@ -78,7 +78,6 @@ public class StringService {
                 }
                 part.setLength(0);
                 partFull.setLength(0);
-                continue;
             }
         }
         return result.toString();
