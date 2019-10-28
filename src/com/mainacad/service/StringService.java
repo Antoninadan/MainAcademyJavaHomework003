@@ -27,16 +27,18 @@ public class StringService {
         result.append("\n");
         result.append(getStringWithFrontSpaces(getUnderscoreString(multiplierStringOne.length()), multiplicationResultStringLength));
         result.append("\n");
-        for (int i = 1; i <= multiplierStringTwo.length(); i++) {
-            int nextSymbol = Character.digit(multiplierStringTwoSymbols[(multiplierStringTwoSymbols.length) - i], 10);
-            int multiplicationResultStage = multiplierOne * nextSymbol;
-            String appendedString = Integer.toString(multiplicationResultStage);
-            appendedString = getStringWithFrontSpaces(appendedString, multiplicationResultStringLength - i + 1);
-            result.append(appendedString);
+        if (multiplierTwo > 9) {
+            for (int i = 1; i <= multiplierStringTwo.length(); i++) {
+                int nextSymbol = Character.digit(multiplierStringTwoSymbols[(multiplierStringTwoSymbols.length) - i], 10);
+                int multiplicationResultStage = multiplierOne * nextSymbol;
+                String appendedString = Integer.toString(multiplicationResultStage);
+                appendedString = getStringWithFrontSpaces(appendedString, multiplicationResultStringLength - i + 1);
+                result.append(appendedString);
+                result.append("\n");
+            }
+            result.append(getUnderscoreString(multiplicationResultStringLength));
             result.append("\n");
         }
-        result.append(getUnderscoreString(multiplicationResultStringLength));
-        result.append("\n");
         result.append(multiplicationResultString);
         return result.toString();
     }
@@ -89,12 +91,12 @@ public class StringService {
         int multiplierTwo = startNumber;
         String stringCheck;
 
-        for (int i = 0; i <= (endNumber - startNumber + 1); i++)
-            for (int j = 0; j <= (endNumber - startNumber + 1); j++) {
+        for (int i = (endNumber - startNumber + 1); i >= 0; i--)
+            for (int j = (endNumber - startNumber + 1); j >= 0; j--) {
                 int multiplication = (multiplierOne + i) * (multiplierTwo + j);
                 stringCheck = Integer.toString(multiplication);
-                if (stringCheck.equals(StringUtils.reverse(stringCheck)) && (multiplication > max)) {
-                    max = multiplication;
+                if (stringCheck.equals(StringUtils.reverse(stringCheck))) {
+                    return max = multiplication;
                 }
             }
         return max;

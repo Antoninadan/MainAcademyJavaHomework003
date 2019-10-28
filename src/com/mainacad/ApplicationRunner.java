@@ -11,7 +11,7 @@ public class ApplicationRunner {
 
         // test string multiplication
         int intOne = 11111;
-        int intTwo = 989;
+        int intTwo = 999;
         LOGGER.info(String.format("Test result: for %d * %d = %d", intOne, intTwo, intOne * intTwo));
         LOGGER.info(StringService.getStringMultiplication(intOne, intTwo));
 
